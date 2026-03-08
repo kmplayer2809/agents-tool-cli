@@ -178,7 +178,7 @@ Run `--skills browse` to pick from the built-in curated catalog:
 | React Native & Expo | Best practices for performant mobile apps with React Native and Expo | react-native, expo, mobile |
 | Web Design Guidelines | UI code review for accessibility, UX audit, and design best practices | design, accessibility, ux |
 
-> The catalog is defined in `src/skills/catalog.ts`. To contribute a skill, open a PR adding an entry to `SKILL_CATALOG`.
+> The catalog data is in `src/skills/catalog.json`. To add a skill, open a PR adding an entry to that file — no TypeScript knowledge required.
 
 ---
 

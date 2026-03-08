@@ -30,7 +30,8 @@ src/registry.ts     → maps AssetType → CommandHandler function
 src/{type}/index.ts → owns parseArgs() + subcommand dispatch for that type
 src/{type}/add.ts   → clone → discover → interactive select → installAsset()
 src/{type}/browse.ts   → (skills only) catalog multiselect → group by source → clone & install
-src/{type}/catalog.ts  → (skills only) static curated catalog + groupBySource() helper
+src/{type}/catalog.ts  → (skills only) type definitions + groupBySource() helper; data loaded from catalog.json
+src/{type}/catalog.json → (skills only) curated catalog data — edit this file to add/remove skills
 src/{type}/discover.ts → scans cloned repo for marker files (SKILL.md / RULE.md / MCP.md)
 src/{type}/installer.ts → writes canonical dir + agent symlink/copy
 src/{type}/list.ts  → reads from .agents/<type>/ on disk
