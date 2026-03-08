@@ -32,6 +32,14 @@
     "@types/node": "^22.0.0",
     "tsx": "^4.0.0"
   },
+  "homepage": "https://github.com/kmplayer2809/agents-tool-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmplayer2809/agents-tool-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kmplayer2809/agents-tool-cli/issues"
+  },
   "engines": {
     "node": ">=18"
   }

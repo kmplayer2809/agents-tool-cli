@@ -2,6 +2,9 @@
 
 Extensible CLI for managing AI agent assets — **skills**, **rules**, and **MCP servers** — across multiple AI coding agents.
 
+**GitHub:** [https://github.com/kmplayer2809/agents-tool-cli](https://github.com/kmplayer2809/agents-tool-cli)
+**Bug reports & feedback:** [https://github.com/kmplayer2809/agents-tool-cli/issues](https://github.com/kmplayer2809/agents-tool-cli/issues)
+
 ## Quick Start
 
 ```bash
