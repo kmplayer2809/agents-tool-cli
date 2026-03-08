@@ -1,10 +1,10 @@
 {
-  "name": "agents-tool",
+  "name": "agents-tool-cli",
   "version": "1.0.0",
   "description": "Extensible CLI for AI agent assets: skills, rules, MCP and more",
   "type": "module",
   "bin": {
-    "agents-tool": "bin/cli.mjs"
+    "agents-tool-cli": "bin/cli.mjs"
   },
   "files": [
     "dist",

@@ -19,7 +19,7 @@ interface McpAddOptions {
 }
 
 export async function runMcpAdd(source: string, options: McpAddOptions): Promise<void> {
-  p.intro(pc.cyan('htrongdi-agents-tool') + pc.dim(' — MCP'));
+  p.intro(pc.cyan('agents-tool-cli') + pc.dim(' — MCP'));
 
   let parsedSource;
   try {

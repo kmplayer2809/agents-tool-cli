@@ -19,7 +19,7 @@ interface RuleAddOptions {
 }
 
 export async function runRulesAdd(source: string, options: RuleAddOptions): Promise<void> {
-  p.intro(pc.cyan('htrongdi-agents-tool') + pc.dim(' — Rules'));
+  p.intro(pc.cyan('agents-tool-cli') + pc.dim(' — Rules'));
 
   let parsedSource;
   try {

@@ -11,7 +11,7 @@ export async function runRulesRemove(
   ruleNames: string[],
   options: { global: boolean; agentArgs: string[]; yes: boolean; all: boolean }
 ): Promise<void> {
-  p.intro(pc.cyan('htrongdi-agents-tool') + pc.dim(' — Remove Rules'));
+  p.intro(pc.cyan('agents-tool-cli') + pc.dim(' — Remove Rules'));
 
   const { global: isGlobal, agentArgs, yes, all } = options;
   const baseDir = isGlobal ? homedir() : process.cwd();

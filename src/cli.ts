@@ -19,21 +19,21 @@ function getVersion(): string {
 function showBanner(): void {
   const version = getVersion();
   console.log(`
-${pc.cyan('agents-tool')} ${pc.dim(`v${version}`)}
+${pc.cyan('agents-tool-cli')} ${pc.dim(`v${version}`)}
 
 ${pc.bold('Extensible CLI for AI agent assets')}
 
-  ${pc.dim('$')} ${pc.cyan('npx agents-tool --skills add')} ${pc.dim('<source>')}    Add skills
-  ${pc.dim('$')} ${pc.cyan('npx agents-tool --rules add')} ${pc.dim('<source>')}     Add rules
-  ${pc.dim('$')} ${pc.cyan('npx agents-tool --mcp add')} ${pc.dim('<source>')}       Add MCP servers
+  ${pc.dim('$')} ${pc.cyan('npx agents-tool-cli --skills add')} ${pc.dim('<source>')}    Add skills
+  ${pc.dim('$')} ${pc.cyan('npx agents-tool-cli --rules add')} ${pc.dim('<source>')}     Add rules
+  ${pc.dim('$')} ${pc.cyan('npx agents-tool-cli --mcp add')} ${pc.dim('<source>')}       Add MCP servers
 
 ${pc.bold('Commands per type:')} add, list, remove, find, check
 
 ${pc.bold('Examples:')}
-  npx agents-tool --skills add vercel-labs/agent-skills
-  npx agents-tool --skills add vercel-labs/agent-skills --skill frontend-design -a claude-code -g
-  npx agents-tool --rules add owner/rules-repo --rule my-rule
-  npx agents-tool --mcp add owner/mcp-repo --mcp-name my-server
+  npx agents-tool-cli --skills add vercel-labs/agent-skills
+  npx agents-tool-cli --skills add vercel-labs/agent-skills --skill frontend-design -a claude-code -g
+  npx agents-tool-cli --rules add owner/rules-repo --rule my-rule
+  npx agents-tool-cli --mcp add owner/mcp-repo --mcp-name my-server
 
 ${pc.bold('Options:')}
   -g, --global          Install globally (~/.agents/...)

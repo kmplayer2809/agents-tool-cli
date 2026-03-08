@@ -7,8 +7,8 @@ export const SKILL_FILE = 'SKILL.md';
 export const RULE_FILE = 'RULE.md';
 export const MCP_FILE = 'MCP.md';
 
-export const LOCK_FILE = 'agents-tool-lock.json';
-export const GLOBAL_LOCK_FILE = '.agents-tool-lock.json';
+export const LOCK_FILE = 'agents-tool-cli-lock.json';
+export const GLOBAL_LOCK_FILE = '.agents-tool-cli-lock.json';
 
 export const ASSET_SUBDIRS: Record<string, string> = {
   skills: SKILLS_SUBDIR,

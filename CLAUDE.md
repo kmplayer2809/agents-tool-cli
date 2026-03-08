@@ -71,7 +71,7 @@ There is no CLI framework. Each `src/{type}/index.ts` contains a local `parseArg
 
 ### Lock file
 
-`agents-tool-lock.json` (project) or `~/.agents-tool-lock.json` (global) tracks installed sources, asset names, target agents, and timestamp. Managed by `src/lock.ts`.
+`agents-tool-cli-lock.json` (project) or `~/.agents-tool-cli-lock.json` (global) tracks installed sources, asset names, target agents, and timestamp. Managed by `src/lock.ts`.
 
 ### Key dependencies
 

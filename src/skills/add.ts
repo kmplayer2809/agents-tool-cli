@@ -19,7 +19,7 @@ interface SkillAddOptions {
 }
 
 export async function runSkillsAdd(source: string, options: SkillAddOptions): Promise<void> {
-  p.intro(pc.cyan('htrongdi-agents-tool') + pc.dim(' — Skills'));
+  p.intro(pc.cyan('agents-tool-cli') + pc.dim(' — Skills'));
 
   let parsedSource;
   try {
