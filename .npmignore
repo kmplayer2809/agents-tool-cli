@@ -1,0 +1,15 @@
+src/
+tests/
+.claude/
+.github/
+*.config.ts
+*.config.js
+tsconfig.json
+pnpm-lock.yaml
+CLAUDE.md
+.env*
+.editorconfig
+.prettierrc
+.eslintrc*
+coverage/
+node_modules/
