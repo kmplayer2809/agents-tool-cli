@@ -22,13 +22,15 @@ node bin/cli.mjs --skills add vercel-labs/agent-skills
 
 ## Architecture
 
-The CLI is structured around **asset types** (`skills`, `rules`, `mcp`), each treated as a first-class module. The top-level flag (`--skills`, `--rules`, `--mcp`) selects the type; the next argument is the subcommand (`add`, `list`, `remove`, `find`).
+The CLI is structured around **asset types** (`skills`, `rules`, `mcp`), each treated as a first-class module. The top-level flag (`--skills`, `--rules`, `--mcp`) selects the type; the next argument is the subcommand (`add`, `list`, `remove`, `find`, `browse`).
 
 ```
 src/cli.ts          → parses argv[2] as asset-type flag, argv[3] as subcommand
 src/registry.ts     → maps AssetType → CommandHandler function
 src/{type}/index.ts → owns parseArgs() + subcommand dispatch for that type
 src/{type}/add.ts   → clone → discover → interactive select → installAsset()
+src/{type}/browse.ts   → (skills only) catalog multiselect → group by source → clone & install
+src/{type}/catalog.ts  → (skills only) static curated catalog + groupBySource() helper
 src/{type}/discover.ts → scans cloned repo for marker files (SKILL.md / RULE.md / MCP.md)
 src/{type}/installer.ts → writes canonical dir + agent symlink/copy
 src/{type}/list.ts  → reads from .agents/<type>/ on disk
@@ -83,3 +85,14 @@ There is no CLI framework. Each `src/{type}/index.ts` contains a local `parseArg
 | `picocolors` | Terminal color output |
 
 All imports must use `.js` extensions (ESM module resolution).
+
+## Rules
+
+### After every code change
+
+After completing any modification to the codebase, always update both:
+
+1. **`CLAUDE.md`** — reflect any architectural changes, new modules, new subcommands, new dependencies, or updated conventions
+2. **`README.md`** — reflect any changes visible to users: new commands, new options, new catalog entries, changed behavior, updated examples
+
+This applies to: adding features, adding subcommands, adding catalog entries, changing file structure, adding dependencies, or any other meaningful change.

@@ -2,6 +2,7 @@ import { runSkillsAdd } from './add.js';
 import { runSkillsList } from './list.js';
 import { runSkillsRemove } from './remove.js';
 import { runSkillsFind } from './find.js';
+import { runSkillsBrowse } from './browse.js';
 
 export async function runSkillsCommand(subcommand: string, args: string[]): Promise<void> {
   const parsed = parseArgs(args);
@@ -46,9 +47,18 @@ export async function runSkillsCommand(subcommand: string, args: string[]): Prom
       await runSkillsFind(parsed.positional[0]);
       break;
 
+    case 'browse':
+    case 'b':
+      await runSkillsBrowse({
+        global: parsed.has('global', 'g'),
+        agentArgs: parsed.getAll('agent', 'a'),
+        copy: parsed.has('copy'),
+      });
+      break;
+
     default:
       console.error(`Unknown skills subcommand: ${subcommand}`);
-      console.error('Available: add, list, remove, find');
+      console.error('Available: add, list, remove, find, browse');
       process.exit(1);
   }
 }
