@@ -29,9 +29,9 @@ src/cli.ts          → parses argv[2] as asset-type flag, argv[3] as subcommand
 src/registry.ts     → maps AssetType → CommandHandler function
 src/{type}/index.ts → owns parseArgs() + subcommand dispatch for that type
 src/{type}/add.ts   → clone → discover → interactive select → installAsset()
-src/{type}/browse.ts   → (skills only) catalog multiselect → group by source → clone & install
-src/{type}/catalog.ts  → (skills only) type definitions + groupBySource() helper; data loaded from catalog.json
-src/{type}/catalog.json → (skills only) curated catalog data — edit this file to add/remove skills
+src/{type}/browse.ts   → (skills + rules) catalog multiselect → group by source → clone & install
+src/{type}/catalog.ts  → (skills + rules) type definitions + groupBySource() helper; data loaded from catalog.json
+src/{type}/catalog.json → (skills + rules) curated catalog data — edit this file to add/remove entries
 src/{type}/discover.ts → scans cloned repo for marker files (SKILL.md / RULE.md / MCP.md)
 src/{type}/installer.ts → writes canonical dir + agent symlink/copy
 src/{type}/list.ts  → reads from .agents/<type>/ on disk
@@ -53,6 +53,14 @@ Assets are stored in a two-layer layout:
 The `universal` agent is special — it writes directly to the canonical dir with no extra symlink. All other agents symlink into it.
 
 `installAsset()` in `src/skills/installer.ts` owns this logic. `src/rules/installer.ts` and `src/mcp/installer.ts` re-export it, passing the appropriate `AssetType`.
+
+#### Windows symlink support
+
+On Windows, directory symlinks require SeCreateSymbolicLinkPrivilege (Developer Mode or admin). The installer handles this automatically:
+
+1. **Junction fallback** — `createDirSymlink()` uses `symlink(target, link, 'junction')` on Windows. Junctions do not require elevated privileges and behave like directory symlinks.
+2. **Copy fallback** — If a junction also fails (EPERM/EACCES), the installer automatically copies instead and logs a dim warning. The install still succeeds.
+3. **Stale junction cleanup** — Before creating a junction, any existing directory at the target path is removed (Windows junctions report `isSymbolicLink() === false` via `lstat`).
 
 ### Adding a new asset type
 

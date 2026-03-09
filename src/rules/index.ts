@@ -1,6 +1,7 @@
 import { runRulesAdd } from './add.js';
 import { runRulesList } from './list.js';
 import { runRulesRemove } from './remove.js';
+import { runRulesBrowse } from './browse.js';
 
 export async function runRulesCommand(subcommand: string, args: string[]): Promise<void> {
   const parsed = parseArgs(args);
@@ -41,9 +42,18 @@ export async function runRulesCommand(subcommand: string, args: string[]): Promi
       });
       break;
 
+    case 'browse':
+    case 'b':
+      await runRulesBrowse({
+        global: parsed.has('global', 'g'),
+        agentArgs: parsed.getAll('agent', 'a'),
+        copy: parsed.has('copy'),
+      });
+      break;
+
     default:
       console.error(`Unknown rules subcommand: ${subcommand}`);
-      console.error('Available: add, list, remove');
+      console.error('Available: add, list, remove, browse');
       process.exit(1);
   }
 }

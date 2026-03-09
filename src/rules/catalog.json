@@ -1,0 +1,162 @@
+[
+  {
+    "name": "TypeScript Strict Mode",
+    "description": "Enable strict TypeScript — ban `any`, require explicit return types, strictNullChecks, noUncheckedIndexedAccess",
+    "source": "jezweb/claude-skills",
+    "ruleName": "typescript-strict",
+    "subpath": "rules/typescript-strict",
+    "tags": ["typescript", "strict", "types"]
+  },
+  {
+    "name": "No Implicit Any",
+    "description": "Never use implicit `any`; annotate every function parameter, variable, and return type explicitly",
+    "source": "jezweb/claude-skills",
+    "ruleName": "no-implicit-any",
+    "subpath": "rules/no-implicit-any",
+    "tags": ["typescript", "types", "code-quality"]
+  },
+  {
+    "name": "Immutable by Default",
+    "description": "Prefer `readonly`, `as const`, `Readonly<T>`; avoid mutation; use functional update patterns",
+    "source": "jezweb/claude-skills",
+    "ruleName": "immutable-by-default",
+    "subpath": "rules/immutable-by-default",
+    "tags": ["typescript", "immutability", "functional"]
+  },
+  {
+    "name": "Type-Safe Error Handling",
+    "description": "Use `Result<T, E>` or discriminated unions for errors; never `throw` untyped exceptions in async flows",
+    "source": "jezweb/claude-skills",
+    "ruleName": "type-safe-errors",
+    "subpath": "rules/type-safe-errors",
+    "tags": ["typescript", "error-handling", "best-practices"]
+  },
+  {
+    "name": "React Hooks Rules",
+    "description": "Enforce rules of hooks — exhaustive deps arrays, no conditional hooks, stable callback refs with useCallback",
+    "source": "jezweb/claude-skills",
+    "ruleName": "react-hooks-rules",
+    "subpath": "rules/react-hooks-rules",
+    "tags": ["react", "hooks", "linting"]
+  },
+  {
+    "name": "No Prop Drilling",
+    "description": "Max 2 levels of prop passing; use Context, Zustand, or composition patterns for deeper state sharing",
+    "source": "jezweb/claude-skills",
+    "ruleName": "no-prop-drilling",
+    "subpath": "rules/no-prop-drilling",
+    "tags": ["react", "state", "architecture"]
+  },
+  {
+    "name": "Component Size Limit",
+    "description": "Each component file ≤ 150 lines; one default export per file; extract sub-components and hooks to separate files",
+    "source": "jezweb/claude-skills",
+    "ruleName": "component-size-limit",
+    "subpath": "rules/component-size-limit",
+    "tags": ["react", "architecture", "maintainability"]
+  },
+  {
+    "name": "Accessibility Required",
+    "description": "All interactive elements need ARIA labels, keyboard event handlers, and sufficient color contrast (WCAG 2.1 AA)",
+    "source": "jezweb/claude-skills",
+    "ruleName": "accessibility-required",
+    "subpath": "rules/accessibility-required",
+    "tags": ["accessibility", "a11y", "ui", "wcag"]
+  },
+  {
+    "name": "No Console Logs in Production",
+    "description": "Remove all console.log/warn/error before merging; use a structured logger (e.g. pino, winston) for server, no logging in client bundles",
+    "source": "jezweb/claude-skills",
+    "ruleName": "no-console-logs",
+    "subpath": "rules/no-console-logs",
+    "tags": ["javascript", "typescript", "code-quality", "logging"]
+  },
+  {
+    "name": "No Magic Numbers",
+    "description": "All numeric literals ≥ 2 digits must be named constants in a constants file; include a comment explaining intent",
+    "source": "jezweb/claude-skills",
+    "ruleName": "no-magic-numbers",
+    "subpath": "rules/no-magic-numbers",
+    "tags": ["code-quality", "readability", "maintainability"]
+  },
+  {
+    "name": "Single Responsibility",
+    "description": "Each function/module does exactly one thing; max cyclomatic complexity of 10; functions ≤ 30 lines",
+    "source": "jezweb/claude-skills",
+    "ruleName": "single-responsibility",
+    "subpath": "rules/single-responsibility",
+    "tags": ["architecture", "code-quality", "maintainability"]
+  },
+  {
+    "name": "Error Handling Required",
+    "description": "Every async function must handle errors; never swallow exceptions silently; always log or surface errors to the caller",
+    "source": "jezweb/claude-skills",
+    "ruleName": "error-handling-required",
+    "subpath": "rules/error-handling-required",
+    "tags": ["api", "error-handling", "best-practices"]
+  },
+  {
+    "name": "Conventional Commits",
+    "description": "All commits follow Conventional Commits spec: `type(scope): description`; valid types: feat/fix/chore/docs/refactor/test/perf",
+    "source": "jezweb/claude-skills",
+    "ruleName": "conventional-commits",
+    "subpath": "rules/conventional-commits",
+    "tags": ["git", "commits", "conventions"]
+  },
+  {
+    "name": "Merge Request Checklist",
+    "description": "MR description must include: what changed, why it changed, how to test, screenshots for UI changes, migration notes for DB changes",
+    "source": "jezweb/claude-skills",
+    "ruleName": "merge-request-checklist",
+    "subpath": "rules/merge-request-checklist",
+    "tags": ["git", "merge-request", "code-review", "collaboration"]
+  },
+  {
+    "name": "Code Review Standards",
+    "description": "Reviews must check: correctness, security, performance, readability, test coverage; comments must be actionable; no rubber-stamping",
+    "source": "jezweb/claude-skills",
+    "ruleName": "code-review-standards",
+    "subpath": "rules/code-review-standards",
+    "tags": ["code-review", "collaboration", "quality"]
+  },
+  {
+    "name": "Branch Naming Convention",
+    "description": "Branch names follow `type/ticket-short-description` (e.g. `feat/AUTH-42-login-page`); no long-running feature branches > 3 days",
+    "source": "jezweb/claude-skills",
+    "ruleName": "branch-naming",
+    "subpath": "rules/branch-naming",
+    "tags": ["git", "conventions", "collaboration"]
+  },
+  {
+    "name": "Test Coverage Minimum",
+    "description": "New code requires ≥ 80% unit test coverage; critical paths (auth, payments, data mutations) require 100%; test file co-located with source",
+    "source": "jezweb/claude-skills",
+    "ruleName": "test-coverage-minimum",
+    "subpath": "rules/test-coverage-minimum",
+    "tags": ["testing", "vitest", "coverage", "quality"]
+  },
+  {
+    "name": "Test Naming Convention",
+    "description": "Test names follow `should <do X> when <condition Y>`; group related tests with `describe` by feature; one assertion focus per test",
+    "source": "jezweb/claude-skills",
+    "ruleName": "test-naming",
+    "subpath": "rules/test-naming",
+    "tags": ["testing", "conventions", "readability"]
+  },
+  {
+    "name": "PostgreSQL Query Rules",
+    "description": "Always use parameterized queries; no `SELECT *` in production; add indexes for every FK and WHERE filter column; use transactions for multi-step writes",
+    "source": "jezweb/claude-skills",
+    "ruleName": "postgresql-query-rules",
+    "subpath": "rules/postgresql-query-rules",
+    "tags": ["database", "postgresql", "sql", "security", "performance"]
+  },
+  {
+    "name": "Java Code Style",
+    "description": "Follow Google Java Style Guide; max method length 30 lines; use `Optional<T>` instead of null returns; constructor injection only; no static mutable state",
+    "source": "jezweb/claude-skills",
+    "ruleName": "java-code-style",
+    "subpath": "rules/java-code-style",
+    "tags": ["java", "spring", "code-style", "best-practices"]
+  }
+]

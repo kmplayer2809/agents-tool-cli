@@ -1,61 +1,31 @@
 [
   {
+    "name": "Skill Creator",
+    "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+    "source": "anthropics/skills",
+    "skillName": "skill-creator",
+    "subpath": "skills/skill-creator",
+    "tags": ["skills", "meta", "creator", "optimization", "evals"]
+  },
+  {
     "name": "Ant Design",
-    "description": "Component patterns and best practices for Ant Design (antd)",
+    "description": "Single-file decision guide for antd 6.x, Ant Design Pro 5/ProComponents, and Ant Design X v2. Use for component selection, theming/tokens, SSR, a11y, performance, routing/access/CRUD, and AI/chat UI patterns.",
     "source": "ant-design/antd-skill",
-    "tags": ["react", "ui", "antd"]
-  },
-  {
-    "name": "React Hook Form + Zod",
-    "description": "Type-safe form handling with react-hook-form and Zod schema validation",
-    "source": "jezweb/claude-skills",
-    "skillName": "react-hook-form-zod",
-    "subpath": "react-hook-form-zod",
-    "tags": ["react", "forms", "validation", "zod"]
-  },
-  {
-    "name": "Next.js App Router",
-    "description": "Best practices for Next.js App Router, Server Components, and server actions",
-    "source": "jezweb/claude-skills",
-    "skillName": "nextjs-app-router",
-    "subpath": "nextjs-app-router",
-    "tags": ["nextjs", "react", "server-components"]
-  },
-  {
-    "name": "Tailwind CSS",
-    "description": "Utility-first CSS patterns and component design with Tailwind CSS",
-    "source": "jezweb/claude-skills",
-    "skillName": "tailwind-css",
-    "subpath": "tailwind-css",
-    "tags": ["css", "styling", "tailwind"]
-  },
-  {
-    "name": "Zustand",
-    "description": "Minimal, scalable state management with Zustand",
-    "source": "jezweb/claude-skills",
-    "skillName": "zustand",
-    "subpath": "zustand",
-    "tags": ["react", "state", "zustand"]
-  },
-  {
-    "name": "TanStack Query",
-    "description": "Async state management and data fetching with TanStack Query (React Query)",
-    "source": "jezweb/claude-skills",
-    "skillName": "tanstack-query",
-    "subpath": "tanstack-query",
-    "tags": ["react", "data-fetching", "tanstack"]
+    "skillName": "ant-design",
+    "subpath": "skills/ant-design",
+    "tags": ["react", "ui", "antd", "ant-design", "pro-components"]
   },
   {
     "name": "React Composition Patterns",
-    "description": "React composition patterns that scale — eliminates boolean prop proliferation and designs flexible, reusable component APIs",
+    "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs.",
     "source": "vercel-labs/agent-skills",
     "skillName": "vercel-composition-patterns",
     "subpath": "skills/composition-patterns",
-    "tags": ["react", "architecture", "components", "vercel"]
+    "tags": ["react", "architecture", "components", "composition"]
   },
   {
     "name": "Deploy to Vercel",
-    "description": "Deploy applications and websites to Vercel — handles deploy, preview deployment, and live link creation",
+    "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
     "source": "vercel-labs/agent-skills",
     "skillName": "deploy-to-vercel",
     "subpath": "skills/deploy-to-vercel",
@@ -63,26 +33,74 @@
   },
   {
     "name": "React & Next.js Best Practices",
-    "description": "React and Next.js performance optimization guidelines from Vercel Engineering — components, data fetching, and bundle optimization",
+    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. Use when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns.",
     "source": "vercel-labs/agent-skills",
     "skillName": "vercel-react-best-practices",
     "subpath": "skills/react-best-practices",
-    "tags": ["react", "nextjs", "performance", "vercel"]
+    "tags": ["react", "nextjs", "performance", "best-practices"]
   },
   {
     "name": "React Native & Expo",
-    "description": "React Native and Expo best practices for performant mobile apps — list performance, animations, and native modules",
+    "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules.",
     "source": "vercel-labs/agent-skills",
     "skillName": "vercel-react-native-skills",
     "subpath": "skills/react-native-skills",
-    "tags": ["react-native", "expo", "mobile"]
+    "tags": ["react-native", "expo", "mobile", "performance"]
+  },
+  {
+    "name": "TanStack Query Best Practices",
+    "description": "TanStack Query (React Query) best practices for data fetching, caching, mutations, and server state management. Activate when building data-driven React applications with server state.",
+    "source": "DeckardGer/tanstack-agent-skills",
+    "skillName": "tanstack-query-best-practices",
+    "subpath": "skills/tanstack-query",
+    "tags": ["react", "data-fetching", "tanstack", "cache", "server-state"]
+  },
+  {
+    "name": "Tailwind Design System",
+    "description": "Build scalable design systems with Tailwind CSS v4, design tokens, component libraries, and responsive patterns. Use when creating component libraries, implementing design systems, or standardizing UI patterns.",
+    "source": "wshobson/agents",
+    "skillName": "tailwind-design-system",
+    "subpath": "plugins/frontend-mobile-development/skills/tailwind-design-system",
+    "tags": ["tailwind", "design-system", "css", "components", "ui"]
+  },
+  {
+    "name": "Zustand (json-render)",
+    "description": "Zustand adapter for json-render's StateStore interface. Use when integrating json-render with Zustand for state management via @json-render/zustand.",
+    "source": "vercel-labs/json-render",
+    "skillName": "zustand",
+    "subpath": "skills/zustand",
+    "tags": ["react", "state", "zustand", "json-render"]
+  },
+  {
+    "name": "Shadcn/ui (json-render)",
+    "description": "Pre-built shadcn/ui components for json-render. Use when working with @json-render/shadcn, adding standard UI components to a catalog, or building web UIs with Radix UI + Tailwind CSS components.",
+    "source": "vercel-labs/json-render",
+    "skillName": "shadcn",
+    "subpath": "skills/shadcn",
+    "tags": ["react", "ui", "shadcn", "radix", "tailwind", "json-render"]
+  },
+  {
+    "name": "React Native (json-render)",
+    "description": "React Native renderer for json-render that turns JSON specs into native mobile UIs. Use when working with @json-render/react-native, building React Native UIs from JSON, creating mobile component catalogs, or rendering AI-generated specs on mobile.",
+    "source": "vercel-labs/json-render",
+    "skillName": "react-native",
+    "subpath": "skills/react-native",
+    "tags": ["react-native", "mobile", "json-render", "ui"]
+  },
+  {
+    "name": "Skill Creator (json-render)",
+    "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+    "source": "vercel-labs/json-render",
+    "skillName": "skill-creator",
+    "subpath": "skills/skill-creator",
+    "tags": ["skills", "meta", "creator", "json-render"]
   },
   {
     "name": "Web Design Guidelines",
-    "description": "Review UI code for Web Interface Guidelines compliance — accessibility, UX audit, and design best practices",
+    "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
     "source": "vercel-labs/agent-skills",
     "skillName": "web-design-guidelines",
     "subpath": "skills/web-design-guidelines",
-    "tags": ["design", "accessibility", "ux", "ui"]
+    "tags": ["design", "accessibility", "ux", "ui", "a11y"]
   }
 ]

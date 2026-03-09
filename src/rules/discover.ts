@@ -1,13 +1,15 @@
 import { readdirSync, statSync, readFileSync, existsSync } from 'fs';
-import { join, basename } from 'path';
+import { join, basename, dirname } from 'path';
 import matter from 'gray-matter';
 import type { Asset } from '../types.js';
 import { RULE_FILE } from '../constants.js';
+import { walkForFile } from '../walk.js';
 
 export function discoverRules(repoPath: string, subpath?: string): Asset[] {
   const basePath = subpath ? join(repoPath, subpath) : repoPath;
   const assets: Asset[] = [];
 
+  // 1. Check rules/ subdirectory first (standard layout)
   const rulesDir = join(basePath, 'rules');
   if (existsSync(rulesDir) && statSync(rulesDir).isDirectory()) {
     const entries = readdirSync(rulesDir);
@@ -22,10 +24,21 @@ export function discoverRules(repoPath: string, subpath?: string): Asset[] {
     }
   }
 
+  // 2. Root-level RULE.md fallback
   if (assets.length === 0) {
     const rootRuleFile = join(basePath, RULE_FILE);
     if (existsSync(rootRuleFile)) {
       const asset = parseAssetFile(rootRuleFile, basename(basePath));
+      if (asset) assets.push(asset);
+    }
+  }
+
+  // 3. Recursive scan fallback — finds RULE.md anywhere in the tree
+  //    (handles repos with non-standard layouts)
+  if (assets.length === 0) {
+    const allFiles = walkForFile(basePath, RULE_FILE);
+    for (const filePath of allFiles) {
+      const asset = parseAssetFile(filePath, basename(dirname(filePath)));
       if (asset) assets.push(asset);
     }
   }

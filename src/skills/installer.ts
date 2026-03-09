@@ -2,9 +2,23 @@ import { mkdir, cp, symlink, lstat, rm } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join, resolve, normalize, relative, dirname, sep } from 'path';
 import { homedir } from 'os';
+import pc from 'picocolors';
 import type { Asset, AgentType, AssetType } from '../types.js';
 import { agents, isUniversalAgent } from '../agents.js';
 import { AGENTS_DIR } from '../constants.js';
+
+/**
+ * Platform-aware directory symlink creation.
+ * On Windows: uses 'junction' type — works without admin/Developer Mode.
+ * On other platforms: standard symlink with no type argument.
+ */
+async function createDirSymlink(target: string, linkPath: string): Promise<void> {
+  if (process.platform === 'win32') {
+    await symlink(target, linkPath, 'junction');
+  } else {
+    await symlink(target, linkPath);
+  }
+}
 
 export type InstallMode = 'symlink' | 'copy';
 
@@ -107,16 +121,27 @@ export async function installAsset(
     await mkdir(dirname(agentTargetDir), { recursive: true });
 
     if (mode === 'symlink') {
-      // Remove existing symlink if any
+      // Remove existing symlink or stale junction (Windows junctions: isSymbolicLink() === false)
       if (existsSync(agentTargetDir)) {
         const stat = await lstat(agentTargetDir);
-        if (stat.isSymbolicLink()) {
-          await rm(agentTargetDir);
+        if (stat.isSymbolicLink() || (process.platform === 'win32' && stat.isDirectory())) {
+          await rm(agentTargetDir, { recursive: true });
         }
       }
 
       const symlinkTarget = relative(dirname(agentTargetDir), canonicalDir);
-      await symlink(symlinkTarget, agentTargetDir);
+      try {
+        await createDirSymlink(symlinkTarget, agentTargetDir);
+      } catch (symlinkErr) {
+        const code = (symlinkErr as NodeJS.ErrnoException).code;
+        if (process.platform === 'win32' && (code === 'EPERM' || code === 'EACCES')) {
+          // Fallback: copy instead of symlink on Windows when privilege is missing
+          console.warn(pc.dim('  ⚠ Symlink failed on Windows (EPERM); copied instead'));
+          await cp(canonicalDir, agentTargetDir, { recursive: true, force: true });
+          return { success: true, path: agentTargetDir, mode: 'copy' };
+        }
+        throw symlinkErr;
+      }
     } else {
       await cp(canonicalDir, agentTargetDir, { recursive: true, force: true });
     }

@@ -11,6 +11,9 @@ Extensible CLI for managing AI agent assets — **skills**, **rules**, and **MCP
 # Browse and install from the built-in skill catalog
 npx agents-tool-cli --skills browse
 
+# Browse and install from the built-in rules catalog
+npx agents-tool-cli --rules browse
+
 # Or install directly from any GitHub repo
 npx agents-tool-cli --skills add vercel-labs/agent-skills
 ```
@@ -68,6 +71,9 @@ npx agents-tool-cli --skills remove frontend-design
 ### Rules
 
 ```bash
+# Browse the built-in rules catalog and install interactively
+npx agents-tool-cli --rules browse
+
 npx agents-tool-cli --rules add https://github.com/owner/rules-repo
 npx agents-tool-cli --rules add owner/repo --rule my-rule
 npx agents-tool-cli --rules list
@@ -90,7 +96,7 @@ npx agents-tool-cli --mcp remove my-server
 | Subcommand | Short | Description |
 |---|---|---|
 | `add <source>` | `a` | Install skills/rules/mcp from a git repository |
-| `browse` | `b` | Pick from the built-in curated catalog (skills only) |
+| `browse` | `b` | Pick from the built-in curated catalog (skills + rules) |
 | `list` | `ls` | List currently installed assets |
 | `remove <name>` | `rm` | Uninstall an asset |
 | `find [query]` | | Open the online skills registry |
@@ -165,23 +171,58 @@ This means updating the canonical copy propagates to all agents automatically.
 
 ## Skills Catalog
 
-Run `--skills browse` to pick from the built-in curated catalog:
+Run `--skills browse` to pick from the built-in curated catalog sourced from [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills):
 
-| Skill | Description | Tags |
-|---|---|---|
-| Ant Design | Component patterns and best practices for Ant Design (antd) | react, ui, antd |
-| React Hook Form + Zod | Type-safe form handling with react-hook-form and Zod schema validation | react, forms, validation |
-| Next.js App Router | Best practices for App Router, Server Components, and server actions | nextjs, react |
-| Tailwind CSS | Utility-first CSS patterns and component design with Tailwind CSS | css, styling |
-| Zustand | Minimal, scalable state management with Zustand | react, state |
-| TanStack Query | Async state management and data fetching with TanStack Query | react, data-fetching |
-| React Composition Patterns | Scalable React composition — eliminates boolean prop proliferation, flexible component APIs | react, architecture, vercel |
-| Deploy to Vercel | Deploy apps to Vercel — handles deploy, preview, and live link creation | vercel, deployment |
-| React & Next.js Best Practices | Performance optimization guidelines from Vercel Engineering | react, nextjs, performance, vercel |
-| React Native & Expo | Best practices for performant mobile apps with React Native and Expo | react-native, expo, mobile |
-| Web Design Guidelines | UI code review for accessibility, UX audit, and design best practices | design, accessibility, ux |
+| Skill | Tags |
+|---|---|
+| React Composition Patterns | react, architecture, components, composition |
+| Deploy to Vercel | vercel, deployment, hosting |
+| React & Next.js Best Practices | react, nextjs, performance, best-practices |
+| React Native & Expo | react-native, expo, mobile, performance |
+| Web Design Guidelines | design, accessibility, ux, ui, a11y |
 
 > The catalog data is in `src/skills/catalog.json`. To add a skill, open a PR adding an entry to that file — no TypeScript knowledge required.
+
+---
+
+## Rules Catalog
+
+Run `--rules browse` to pick from the built-in curated rules catalog (20 rules):
+
+| Rule | Tags |
+|---|---|
+| TypeScript Strict Mode | typescript, strict, types |
+| No Implicit Any | typescript, types, code-quality |
+| Immutable by Default | typescript, immutability, functional |
+| Type-Safe Error Handling | typescript, error-handling, best-practices |
+| React Hooks Rules | react, hooks, linting |
+| No Prop Drilling | react, state, architecture |
+| Component Size Limit | react, architecture, maintainability |
+| Accessibility Required | accessibility, a11y, ui, wcag |
+| No Console Logs in Production | javascript, typescript, code-quality |
+| No Magic Numbers | code-quality, readability, maintainability |
+| Single Responsibility | architecture, code-quality, maintainability |
+| Error Handling Required | api, error-handling, best-practices |
+| Conventional Commits | git, commits, conventions |
+| Merge Request Checklist | git, merge-request, code-review |
+| Code Review Standards | code-review, collaboration, quality |
+| Branch Naming Convention | git, conventions, collaboration |
+| Test Coverage Minimum | testing, vitest, coverage, quality |
+| Test Naming Convention | testing, conventions, readability |
+| PostgreSQL Query Rules | database, postgresql, sql, security |
+| Java Code Style | java, spring, code-style, best-practices |
+
+> The catalog data is in `src/rules/catalog.json`. To add a rule, open a PR adding an entry to that file — no TypeScript knowledge required.
+
+---
+
+## Windows Support
+
+On Windows, directory symlinks require elevated privileges (Developer Mode or admin). The installer handles this automatically:
+
+- **Junction links** are used first (no privileges required, work like directory symlinks)
+- If that also fails, files are **copied automatically** with a warning — installation still succeeds
+- No manual configuration needed
 
 ---
 
